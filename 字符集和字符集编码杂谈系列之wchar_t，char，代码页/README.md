@@ -27,7 +27,7 @@
 # char 类型使用的字符集编码
 这个问题更确切的问法是，在 Windows 平台下，应用程序运行时使用什么字符集编码来解释程序中的 char 类型字符串？答案是取决于系统设置。具体就是指 Windows 控制面板中的区域设置，如下所示:
 
-![Windows 区域设置](http://img.blog.csdn.net/20150701160714462 "Windows 区域设置")
+![Windows 区域设置](https://raw.githubusercontent.com/HDM1991/Blog/master/%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81%E6%9D%82%E8%B0%88%E7%B3%BB%E5%88%97%E4%B9%8Bwchar_t%EF%BC%8Cchar%EF%BC%8C%E4%BB%A3%E7%A0%81%E9%A1%B5/local.png "Windows 区域设置")
 
 更详细的情况大家可以参考如下文章:
 
