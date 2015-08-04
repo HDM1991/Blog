@@ -31,7 +31,7 @@
 
 更详细的情况大家可以参考如下文章:
 
-* [谈谈Windows程序中的字符编码](http://blog.csdn.net/shyboy_nwpu/article/details/4431668)
+* [谈谈Windows程序中的字符编码](https://raw.githubusercontent.com/HDM1991/Blog/master/%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81%E6%9D%82%E8%B0%88%E7%B3%BB%E5%88%97%E4%B9%8Bwchar_t%EF%BC%8Cchar%EF%BC%8C%E4%BB%A3%E7%A0%81%E9%A1%B5/local.png)
 
 # 代码页
 说到 Windows 下的字符集编码，就不能不说代码页这个概念。代码页其实就是字符集编码，一个代码页代表一种字符集编码，只不过每一个代码页都由一个唯一的编号标识，或者说在代码页的概念中，每一种字符集编码都由一个唯一的编号标识。那谁来规定哪个数字来代表哪个字符集编码呢？这是一个问题，一个标准制定的问题。很不幸，在 Windows 平台下存在两种标准，一种是 OEM 代码页；一种是 Windows 代码页（Windows ANSI code page）。
