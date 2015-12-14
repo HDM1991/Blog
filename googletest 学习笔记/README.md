@@ -47,11 +47,11 @@ Test Fixtures 用于在多个 Test 之间共享一份数据和代码。很常规
 > Sometimes a user has to use EXPECT_TRUE() to check a complex expression, for lack of a better macro. This has the problem of not showing you the values of the parts of the expression, making it hard to understand what went wrong.
 
 但实际情况并不是这样。下面是使用 EXPECT\_PRED2 和 EXPECT\_GT 进行同样的判断在失败时两者分别输出的信息：
-    
+
     // EXPECT\_GT 输出的信息
     ../samples/sample1_unittest.cc:90: Failure
     Expected: (Factorial(-10)) > (2), actual: 1 vs 2
-    
+
     // EXPECT\_PRED2 输出的信息
     ../samples/sample1_unittest.cc:94: Failure
     MyGreater(Factorial(-10), 2) evaluates to false, where
@@ -74,7 +74,7 @@ Test Fixtures 用于在多个 Test 之间共享一份数据和代码。很常规
 
 ## Type Assertions
 就是下面这个函数：
-    
+
     ::testing::StaticAssertTypeEq<T1, T2>();
 
 当 T1 和 T2 的类型不一样时会导致编译错误。文档中的说法是这个函数主要用于模板类的成员函数中或者模板函数中。但暂时对这个函数的用途没什么实际的体会。
@@ -148,7 +148,7 @@ googletest 中的 Assertion 在打印相关信息时需要被打印的变量的�
 下面是引入这个特性的原因：
 
  > If a test sub-routine is called from several places, when an assertion inside it fails, it can be hard to tell which invocation of the sub-routine the failure is from.
- 
+
  这其实很像在开启了多个工作线程的项目中，需要跟踪每个工作线程的状态的需求；而且解决思路也是大同小异，都是打印一些能标识每次调用或者每个工作线程身份的信息。不过，googletest 把这种思想抽象成了一个函数：
 
      SCOPED_TRACE(message);
