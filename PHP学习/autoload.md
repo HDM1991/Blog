@@ -65,8 +65,6 @@ This PSR also describes where to place files that will be autoloaded according t
 
 关于 PSR-4 的详细规定，参考官方文档[《PSR-4: Autoloader》][2]吧。
 
-
-
 # 参考文档
 1. [PHP系列- Autoload 自动载入][1]
 
