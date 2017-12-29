@@ -1,3 +1,30 @@
+# 事件捕获
+DOM0级事件处理程序
+
+DOM2级事件处理程序
+
+在DOM0级事件中，事件处理只有事件冒泡的过程，在IE8及其早期版本中只支持DOM0级事件。而W2C规范中的DOM2级事件规范中，规定了事件处理分为三个阶段：
+
+1. 事件捕获阶段
+2. 事件目标阶段
+3. 事件冒泡阶段
+
+NOTE: 真是 TM 的乱。
+
+然后 jquery 为了解决浏览器的兼容问题，它又在原生的事件规范（DOM2级事件规范）中，加了很多自己的东西，具体特性如下：
+
+1. 重定义了JQuery.Event对象, 统一了事件属性和方法, 统一了事件模型
+2. 可以在一个事件类型上添加多个事件处理函数, 可以一次添加多个事件类型的事件处理函数
+3. 支持自定义事件(事件命名空间)
+4. 提供了toggle, hover组合事件
+5. 提供了one, live-die, delegate-undelegate
+6. 提供了统一的事件封装, 绑定, 执行, 销毁机制
+7. $(document).ready();
+
+真是日了狗。这块先研究到这里。
+
+
+
 # return false
 下面这个分别使用3中不同的方式给 id 为 baidu 的 a 标签添加 click 时间处理函数，然后在处理函数中返回 fasle。
 三种方式返回 false 的效果分别如下：
@@ -76,3 +103,5 @@
 [1]: http://blog.csdn.net/luanlouis/article/details/23927347 "解析Javascript事件冒泡机制"
 [2]: https://developer.mozilla.org/zh-CN/docs/Web/API/Event/preventDefault "event.preventDefault"
 [3]: https://www.cnblogs.com/yycode/articles/5499234.html "js事件(Event)之（四）阻止默认操作"
+[5]: https://itbilu.com/javascript/js/Vy1jsXqJg.html "JavaScript DOM文档事件－DOM0、DOM2级事件处理程序"
+[4]: https://itbilu.com/javascript/js/Ek6pnznye.html "JavaScript DOM事件处理－事件捕获和事件冒泡"
