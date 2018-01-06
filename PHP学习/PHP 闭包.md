@@ -26,7 +26,7 @@ NOTE: 通过 use 传递给觅名函数的变量的值，在定义觅名函数时
 
     // Inherit by-reference
     $message = 'hello';
-    $example = function () use (&$message) {
+    $example = function () use (&$w) {
         var_dump($message);
     };
     echo $example();

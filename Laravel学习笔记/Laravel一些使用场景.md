@@ -77,6 +77,11 @@ If you would like to create a JSONP response, you may use the json method in add
 参考文档如下：
 1. [Database: Migrations][3]
 
+# 删除 migrate 文件
+首先手动删除 migrate 文件，然后执行如下命令
+
+    composer dumpautoload
+
 [1]: https://laravel.com/docs/5.2/blade "Blade Templates"
 [2]: https://laravel.com/docs/5.2/responses "HTTP Responses"
 [3]: https://laravel.com/docs/5.2/migrations "Database: Migrations"

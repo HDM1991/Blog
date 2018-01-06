@@ -68,7 +68,7 @@ Creating Columns 包含如下元素：
 2. Column Modifiers
     Column Modifiers 用于对列进行一些修饰，比如可以指定列的值唯一为NULL，指定列的默认值，为列指定注释，Set integer columns to UNSIGNED，还有就是指定列为索引(index modifiers)
 
-## Database Migrations
+## Database migrations
 Laravel's database migrations provide an easy way to define your database table structure and modifications using fluent, expressive PHP code.Instead of telling your team members to manually add columns to their local copy of the database, your teammates can simply run the migrations you push into source control.
 
  听起来挺有用的，但说实话，并没有什么实际感受。
@@ -81,8 +81,6 @@ Laravel's database migrations provide an easy way to define your database table 
 
 Laravel's schema builder
 database schema
-
-
 
 # Eloquent ORM
 ## Inserting & Updating Models
@@ -104,9 +102,6 @@ Database Migrations 和 Eloquent Models 我觉得比使用 sql 去完成同样�
 
 ### Eloquent Relationships
 这个就是我们在 sql 语句中定义的不同表之间的依赖关系，外键什么的。只不过这里是在 Laravel 的框架下以 PHP 代码的形式表达的，然后对于这种 relationship 的检查也从数据库引擎变成了 Laravel。我现在越发觉得，在Web开发中，我们并不需要直接以SQL语句的形式操作数据库了。
-
-
-
 
 First, we will state that the name attribute on the model should be "mass-assignable". This will allow us to fill the name attribute when using Eloquent's create method:
 
@@ -156,6 +151,16 @@ First, we will state that the name attribute on the model should be "mass-assign
 
 [Laravel - Mass Assignment][http://ju.outofmemory.cn/entry/136406]
 [10.Laravel5学习笔记：Laravel中的批量赋值探索][http://blog.csdn.net/hel12he/article/details/47023253]
+
+当用户通过 HTTP 请求传入了非预期的参数，并借助这些参数更改了数据库中你并不打算要更改的字段，
+这时就会出现批量赋值（Mass-Assignment）漏洞。例如，恶意用户可能会通过 HTTP 请求发送 is_admin 参数，然后对应到你模型的 create 方法，此操作能让该用户把自己升级为一个管理者。
+
+现在理解上面这段话了，有时候更新一条记录时，我们可能会想这样写
+
+    Student::where('id', $request->id)->update($request->all());
+
+但这样写，却很不严谨，假如有人恶意构造了 request，在 request 中加入了我们不想要更新的字段，上面的写法就会出问题。
+但是，结合 Laravel 的批量赋值特性，就能解决这个问题，只要不是声明过可以批量赋值的字段，在执行上面这段代码时，laravel 都不会对其进行处理，这样我们即可以方面的采用上面的这种写法，又不用担心出现安全问题了。
 
 # Routing
 Routes are used to point URLs to controllers or anonymous functions that should be executed when a user accesses a given page. By default, all Laravel routes are defined in the app/Http/routes.php file that is included in every new project.
