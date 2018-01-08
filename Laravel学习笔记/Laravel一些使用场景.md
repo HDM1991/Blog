@@ -82,6 +82,22 @@ If you would like to create a JSONP response, you may use the json method in add
 
     composer dumpautoload
 
+# Specified key was too long 错误
+https://news.laravel-china.org/posts/544
+
+# exists 和 unique 表单验证规则
+需要注意两点，unique 有一个忽略的语法，然后 exisits 和 unique 两者都有指定 where 条件的语法。
+
+    'email' => 'unique:users,email_address,NULL,id,account_id,1'
+
+    'email' => 'exists:staff,email,account_id,1'
+    
+    'email' => 'exists:staff,email,role,!admin'
+
+
+
+
 [1]: https://laravel.com/docs/5.2/blade "Blade Templates"
 [2]: https://laravel.com/docs/5.2/responses "HTTP Responses"
 [3]: https://laravel.com/docs/5.2/migrations "Database: Migrations"
+[4]: https://laravel.com/docs/5.2/validation#rule-unique "Rule unique"
