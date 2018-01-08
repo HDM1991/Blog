@@ -24,7 +24,6 @@ NOTE: 真是 TM 的乱。
 真是日了狗。这块先研究到这里。
 
 
-
 # return false
 下面这个分别使用3中不同的方式给 id 为 baidu 的 a 标签添加 click 时间处理函数，然后在处理函数中返回 fasle。
 三种方式返回 false 的效果分别如下：
