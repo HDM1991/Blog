@@ -67,6 +67,9 @@ boost 库在编译时有很多选项，将这些选项进行组合，可以编�
 
 上述命令会编译32位的所有模块的4个版本。
 
+## 示例4
+.\b2 install --prefix="D:\ThirtyLib" --exec-prefix="D:\ThirtyLib\bin" --includedir="D:\ThirtyLib\include" --libdir="D:\ThirtyLib\lib\x64\vc14" --with-program_options  address-model=64 threading=multi link=static,shared
+
 # Auto-Linking
 Most Windows compilers and linkers have so-called “auto-linking support,” which eliminates the second challenge. Special code in Boost header files detects your compiler options and uses that information to encode the name of the correct library into your object files; the linker selects the library with that name from the directories you've told it to search.
 

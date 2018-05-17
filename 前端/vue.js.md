@@ -49,6 +49,51 @@ vue.js 的意义这里不在谈了，简而言之，就两点，数据与DOM的�
       }
     })
 
+### Class 与 Style 绑定
+class 和 style 都是属性，所以可以直接使用常规的 v-bind 语法处理它们，只需要通过表达式计算出字符串结果即可。但 vue.js 在处理 class 和 style 属性时，给我们提供了加强语法，即表达式结果的类型除了字符串之外，还可以是对象或数组。
+
+### 示例一：class 对象语法
+    <div v-bind:class="{ active: isActive }"></div>
+
+上面的语法表示 active 这个 class 存在与否将取决于数据属性 isActive 的 truthiness。
+
+### 示例二：class 数组语法
+    <div v-bind:class="[activeClass, errorClass]"></div>
+
+    data: {
+      activeClass: 'active',
+      errorClass: 'text-danger'
+    }
+
+该示例的渲染结果如下：
+
+    <div class="active text-danger"></div>
+
+### 示例三：class 数组语法和对象语法混用
+    <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+
+### 示例四：style 对象语法
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+
+    data: {
+      activeColor: 'red',
+      fontSize: 30
+    }
+
+注意 CSS 属性名得用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名。所以例子中 font-size css 属性名，需要写成 fontSize，直接写成 font-size，会报错，因为 JavaScript 不允许变量这样命名。
+
+### 示例四：style 数组语法
+即将多个样式对象应用到同一个元素上
+
+    <div v-bind:style="[baseStyles, overridingStyles]"></div>
+
+
+可以看到，style 的对象语法和 class 的对象语法看着一样，但区别还是很大的。
+
+### 示例四：style 数组语法
+
+
+
 ## 绑定表单输入 v-model
 
     <div id="app-6">
@@ -228,6 +273,47 @@ NOTE:模板表达式都被放在沙盒中，只能访问全局变量的一个白
 
     <form v-on:submit.prevent="onSubmit">...</form>
 
+* .capture
+表示在事件捕获阶段处理事件。相关概念可以参考《[JavaScript DOM事件处理－事件捕获和事件冒泡][4]》这篇文档。
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>preventDefault example</title>
+    </head>
+    <body id="body">  
+        <div id='container'>
+          <div id="box1" class="box1" style="height: 200px;background-color: gray;width: 400px" v-on:click.capture='box1'>  
+              <div id="box2" class="box2" style="height: 100px;background-color: red;width: 200px" v-on:click='box2'>  
+                  <span id="span" v-on:click='span'>This is a span.</span>  
+                  <a href="https://www.baidu.com" id='baidu' onclick="c()">baidu</a>
+              </div>  
+          </div>  
+        </div>
+    </body>
+    <script type="text/javascript" src='assets/jquery/dist/jquery.js'></script>
+    <script type="text/javascript" src='assets/vue/dist/vue.js'></script>
+    <script type="text/javascript">  
+      new Vue({
+        el: '#container',
+        data: {
+        },
+        methods:{
+          box1: (event) => {
+            alert("您好，我是最外层div。");
+          },
+          box2: (event) => {
+            alert("您好，我是第二层div。");
+          },
+          span: (event) => {
+            alert("您好，我是span。");
+          }
+        }
+      })
+;    </script>  
+    </html>
+
 [1]: http://www.cnblogs.com/keepfool/p/5619070.html "vue.js——60分钟快速入门"
 [2]: https://cn.vuejs.org/ "Vue.js"
 [3]: https://cn.vuejs.org/v2/api/ "Vue.js Api"
+[4]: https://itbilu.com/javascript/js/Ek6pnznye.html "JavaScript DOM事件处理－事件捕获和事件冒泡"
