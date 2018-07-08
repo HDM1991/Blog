@@ -9,7 +9,7 @@
 boost 库在编译时有很多选项，将这些选项进行组合，可以编译出 boost 库的不同版本。下面是这些选项：
 
 1. threading；单线程、多线程
-2. threading；static（静态库）、share（动态库）
+2. link；static（静态库）、share（动态库）
 3. variant；debug、release
 4. runtime-link；Whether to link to static or shared C and C++ runtime. 
 
