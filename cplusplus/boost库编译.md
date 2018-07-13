@@ -58,7 +58,7 @@ boost 库在编译时有很多选项，将这些选项进行组合，可以编�
 上述命令会编译单独编译 64位的 filesystem 模块的 4 个版本（上面提到的），并将头文件放到 D:\ThirtyLib\boost\include 目录下，库文件放到 D:\ThirtyLib\boost\x64\vc14\lib 目录下。
 
 ### 示例2
-.\b2 install  --prefix="D:\ThirtyLib\boost" --libdir="D:\ThirtyLib\boost\x64\vc14\lib" --with-filesystem threading=multi link=static,shared
+.\b2 install  --prefix="D:\ThirtyLib\boost" --libdir="D:\ThirtyLib\boost\x64\vc14\lib" --with-filesystem threading=multi link=static,shared runtime-link=share
 
 上面的命令会单独编译 32 位的 filesystem 模块的 4 个版本。
 
