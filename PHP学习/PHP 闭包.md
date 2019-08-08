@@ -1,6 +1,6 @@
 匿名函数（Anonymous functions），也叫闭包函数（closures），允许 临时创建一个没有指定名称的函数。
 
-匿名函数目前是通过 Closure 类来实现的。
+匿名函数目前是通过 Closure 类来实现的。Closure 实现了__invoke魔术方法，所以可以被当成函数调用。说白了这就是C++重载函数调用操作符。
 
 闭包可以从父作用域中继承变量。 任何此类变量都应该用 use 语言结构传递进去。 PHP 7.1 起，不能传入此类变量： superglobals、 $this 或者和参数重名。闭包的父作用域是定义该闭包的函数。
 
@@ -43,6 +43,8 @@ NOTE: 通过 use 传递给觅名函数的变量的值，在定义觅名函数时
 As of PHP 5.4.0, when declared in the context of a class, the current class is automatically bound to it, making $this available inside of the function's scope.
 从 PHP 5.4 开始，当在一个类中定义觅名函数时，可以直接在觅名函数中通过 $this 访问当前类实例。
 
+然后，还可以通过 bindTo 函数将其他类实例绑定到闭包对象，也就是说将 $this 指向其他对象的示例。
+
     <?php
     class Test
     {
@@ -78,3 +80,4 @@ As of PHP 5.4, anonymous functions may be declared statically. This prevents the
 其他点，如通过 use 传递变量的引用，静态觅名函数暂时不用关心。 
 
 [1]: http://php.net/manual/zh/functions.anonymous.php "匿名函数"
+[2]: https://www.php.net/manual/zh/closure.bindto.php "Closure::bindTo"

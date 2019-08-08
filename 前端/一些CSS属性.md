@@ -14,7 +14,8 @@ break-all
 # line-height
 line-height 属性设置行间的距离（行高）。
 
-该属性会影响行框的布局。
+该属性会影响行框的布局。应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
+line-height 与 font-size 的计算值之差（在 CSS 中成为“行间距”）分为两半，分别加到一个文本行内容的顶部和底部。可以包含这些内容的最小框就是行框。
 
 # white-space
 The [white-space][1] CSS property determines how whitespace inside an element is handled.
@@ -25,12 +26,19 @@ whitespace 具体指什么？空格、制表符、换行符。
 
 下面这张表总结的很好。New lines 指换行符；Text wrapping 指文本长度超出元素的宽度时如何处理。
 
-            New lines   Spaces and tabs     Text wrapping
-normal      Collapse    Collapse            Wrap
-nowrap      Collapse    Collapse            No wrap
-pre         Preserve    Preserve            No wrap
-pre-wrap    Preserve    Preserve            Wrap
-pre-line    Preserve    Collapse            Wrap
+          换行符      空格和制表符    当行长度超过元素长度时，是否wrap
+normal    合并        合并          是
+nowrap    合并        合并          否
+pre       保留        保留          否
+pre-wrap  保留        保留      是
+pre-line  保留        合并      是
+
+什么叫合并，对于空格和制表符，不管是连续多少个空格和制表符，浏览器显示时只显示一个空格；对于换行符，浏览器不会换行，也是显示一个空格。
+
+什么叫保留。对于空格和制表符，就是有多少个就显示多少了；对于换行符，就是正常换行。
+
+
+
 
 
 # writing-mode

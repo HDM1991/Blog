@@ -57,5 +57,9 @@ CURLOPT_TIMEOUT 允许 cURL 函数执行的最长秒数。
 
 CURLOPT_TIMEOUT_MS  设置cURL允许执行的最长毫秒数。 如果 libcurl 编译时使用系统标准的名称解析器（ standard system name resolver），那部分的连接仍旧使用以秒计的超时解决方案，最小超时时间还是一秒钟。  
 
+# 获取响应的 header
+https://www.xinghonggui.com/backend/php-curl-headerinfo/
+
+
 [1]: http://www.snooda.com/read/322 "curl耗时长问题-Expect: 100-continue "
 [2]: http://www.cnblogs.com/tekkaman/archive/2013/04/03/2997781.html "http之100-continue"

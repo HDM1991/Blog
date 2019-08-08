@@ -98,6 +98,9 @@ unique:table,column,except,idColumn
 
 unique 这个忽略语法的用途在于，当用户在更新数据时，然后我们必须验证某个字段在数据表中唯一，但并不是数据表中的所有记录用户修改的数据对应的市局表中的记录。
 
+# Route::controller 用法
+
+https://laravel.com/docs/5.1/controllers#implicit-controllers
 
 
 
