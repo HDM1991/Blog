@@ -61,5 +61,32 @@ CURLOPT_TIMEOUT_MS  设置cURL允许执行的最长毫秒数。 如果 libcurl �
 https://www.xinghonggui.com/backend/php-curl-headerinfo/
 
 
+# 上传文件
+如果是 PHP 7 及以上版本，上传文件必须用 CURLFile。
+
+如果是PHP7一下版本，必须将 CURLOPT_SAFE_UPLOAD 选项设置为 false，才能使用如下形式上传文件，否则必须用 CURLFile
+
+    <?php
+    $url = "http://bbs.pythontab.com/upload.php";
+    $post_data = array(
+    "foo" => "bar",
+    //要上传的本地文件地址
+    "upload" = > "@/www/test/log.txt"
+    );
+    $ch = curl_init();
+    curl_setopt($ch , CURLOPT_URL , $url);
+    curl_setopt($ch , CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch , CURLOPT_POST, 1);
+    curl_setopt($ch , CURLOPT_POSTFIELDS, $post_data);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    echo $output;
+    ?>
+ 
+
+CURLOPT_SAFE_UPLOAD 
+TRUE 禁用 @ 前缀在 CURLOPT_POSTFIELDS 中发送文件。 意味着 @ 可以在字段中安全得使用了。 
+
 [1]: http://www.snooda.com/read/322 "curl耗时长问题-Expect: 100-continue "
 [2]: http://www.cnblogs.com/tekkaman/archive/2013/04/03/2997781.html "http之100-continue"
+[3]: https://www.php.net/manual/zh/curlfile.construct.php "CURLFile"

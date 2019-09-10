@@ -313,6 +313,79 @@ NOTE:模板表达式都被放在沙盒中，只能访问全局变量的一个白
 ;    </script>  
     </html>
 
+# vuex
+当我们的应用遇到多个组件共享状态时，单向数据流的简洁性很容易被破坏：
+
+多个视图依赖于同一状态。
+来自不同视图的行为需要变更同一状态。
+
+
+
+# 计算属性和侦听器中坑
+计算属性
+
+数组
+对象
+
+[vue计算属性无法监听到数组内部变化][https://blog.csdn.net/grepets/article/details/82145946]
+
+[VUE-解决无法监听数组、对象的变化][https://blog.csdn.net/qq_15509267/article/details/88086810]
+
+[Vue中数组和对象更改后视图不刷新的问题][https://blog.csdn.net/zifeiyu130/article/details/78950244]
+
+
+1. 修改已有数组中某个成员的属性
+
+    app2.users[0].name = 'dddd';
+
+  触发了 watch，但没有触发 computed
+
+2. 调用数组的 push 方法
+
+    app2.users.push({name: 'mmm', msgs:['1', 2]})
+  
+  两者都触发了
+
+3. 给数组中某个成员添加一个属性
+
+    app2.users[2].age = 1;
+
+    两者都不触发
+
+4. 设置添加后的数组成员的属性
+
+    app2.users[3].name='bbb
+
+    触发了 watch，但没有触发 computed
+
+5. 添加一个新的数组成员，然后调用这个数组成员中的属性的 push
+  app2.users.push({name: 'mmm', msgs:['1', 2]})
+  app2.users[4].msgs.push('333');
+
+  只是触发了 toggle watch
+
+6. 调用现有数组成员的某个属性的 push
+    
+    app2.users[0].msgs.push('jjjj');
+  
+    var user = app2.users[0];
+    user.msgs.push('jjjj')
+    app2.$set(app2.users, 0, user)
+
+    app2.$set(app2.users[0].msgs, app2.users[0].msgs.length, 'dddd')
+
+
+  指出发了 watch
+
+
+
+# 事件处理
+
+
+# 各种坑
+在被 watch 的数据的处理函数中在次修改被watch的数据，会不会触发无限watch？
+会
+
 [1]: http://www.cnblogs.com/keepfool/p/5619070.html "vue.js——60分钟快速入门"
 [2]: https://cn.vuejs.org/ "Vue.js"
 [3]: https://cn.vuejs.org/v2/api/ "Vue.js Api"

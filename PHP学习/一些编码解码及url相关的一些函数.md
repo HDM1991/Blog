@@ -1,9 +1,21 @@
 # html 编码解码
-htmlentities() 
+htmlentities()
+
+简单来讲，HTML 标签用到的字符不能在 HTML作为普通字符直接使用，因为会影响到 HTML 的解析，如果要使用这些字符，就需要使用这些字符对应的HMTL实体（其实就是其他转义字符的概念。） 
+
+
+然后在过滤用户输入时，可以根据情况使用 htmlentities 处理用户输入，防止恶意代码注入。
+
 
 
 html_entity_decode
 https://www.php.net/manual/zh/function.html-entity-decode.php
+
+
+[HTML 字符实体][https://www.w3school.com.cn/html/html_entities.asp]
+在 HTML 中，某些字符是预留的。
+在 HTML 中不能使用小于号（<）和大于号（>），这是因为浏览器会误认为它们是标签。
+如果希望正确地显示预留字符，我们必须在 HTML 源代码中使用字符实体（character entities）。
 
 
 # url 编码解码
