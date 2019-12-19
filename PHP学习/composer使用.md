@@ -10,6 +10,10 @@ c) 你声明你所依赖的东西。
 d) Composer 会找出哪个版本的包需要安装，并安装它们（将它们下载到你的项目中）。
 
 ## 常用命令
+# dump-autoload
+dump-autoload   Dumps the autoloader.
+dumpautoload    Dumps the autoloader.
+
 ### remove
 
 ### 
@@ -77,3 +81,4 @@ https://pkg.phpcomposer.com/
 
     
 [1]: http://docs.phpcomposer.com/00-intro.html "Composer 简介"
+

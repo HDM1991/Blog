@@ -338,11 +338,11 @@ NOTE:模板表达式都被放在沙盒中，只能访问全局变量的一个白
 
     app2.users[0].name = 'dddd';
 
-  触发了 watch，但没有触发 computed
+  触发了 watch，数据但没有触发 computed
 
 2. 调用数组的 push 方法
 
-    app2.users.push({name: 'mmm', msgs:['1', 2]})
+    app2.users.push({name: 'mmm', age: 1, msgs:['1', 2]})
   
   两者都触发了
 
@@ -385,6 +385,41 @@ NOTE:模板表达式都被放在沙盒中，只能访问全局变量的一个白
 # 各种坑
 在被 watch 的数据的处理函数中在次修改被watch的数据，会不会触发无限watch？
 会
+
+[vue报错 Do not use built-in or reserved HTML elements as component id:header][https://www.cnblogs.com/qingqingzou-143/p/7068514.html]
+
+[Vue warn: Avoid mutating a prop directly since the value will be overwritten][https://blog.csdn.net/u014520745/article/details/75455979]
+
+# 过滤器
+过滤器用于一些常见的文本格式化
+
+    <!-- 在双花括号中 -->
+    {{ message | capitalize }}
+
+    <!-- 在 `v-bind` 中 -->
+    <div v-bind:id="rawId | formatId"></div>
+
+
+需要注意的是，在组件的过滤器中，不能通过 this 访问组件实例，this 实例指向的 windows 对象
+
+# 自定义指令
+需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。
+
+一个指令定义对象可以提供如下几个钩子函数 (均为可选)：
+
+
+# 自定义事件
+始终使用 kebab-case 的事件名
+
+## .sync 修饰符
+在有些情况下，我们可能需要对一个 prop 进行“双向绑定”。不幸的是，真正的双向绑定会带来维护上的问题，因为子组件可以修改父组件，且在父组件和子组件都没有明显的改动来源。
+
+
+[Vue中封装input组件][https://blog.csdn.net/res_min/article/details/76473424]
+[自定义事件][https://cn.vuejs.org/v2/guide/components-custom-events.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84-v-model]
+
+# 深入响应式原理
+
 
 [1]: http://www.cnblogs.com/keepfool/p/5619070.html "vue.js——60分钟快速入门"
 [2]: https://cn.vuejs.org/ "Vue.js"

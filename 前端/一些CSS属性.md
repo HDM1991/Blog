@@ -53,6 +53,16 @@ cursor 属性规定要显示的光标的类型（形状）。
 
 该属性定义了鼠标指针放在一个元素边界范围内时所用的光标形状
 
+# background-image
+background-size
+https://www.w3school.com.cn/cssref/pr_background-size.asp
+
+background-repeat
+https://www.w3school.com.cn/cssref/pr_background-repeat.asp
+
+background-position
+https://www.w3school.com.cn/cssref/pr_background-position.asp
+
 [1]: https://developer.mozilla.org/en-US/docs/Web/CSS/white-space "white-space"
 [2]: http://www.w3school.com.cn/cssref/pr_dim_line-height.asp "CSS line-height 属性"
 [3]: https://www.w3schools.com/css/css_inline-block.asp "CSS Layout - inline-block"
