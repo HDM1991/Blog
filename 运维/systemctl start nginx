@@ -1,0 +1,4 @@
+systemctl start nginx
+systemctl start php-fpm
+systemctl start supervisord
+systemctl start redis
